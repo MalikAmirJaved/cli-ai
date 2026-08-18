@@ -18,6 +18,18 @@
       --red: #f85149;
     }
 
+    [data-theme="light"] {
+      --bg: #f6f8fa;
+      --bg-card: #ffffff;
+      --border: #d0d7de;
+      --text: #1f2328;
+      --muted: #656d76;
+      --accent: #0969da;
+      --green: #1a7f37;
+      --purple: #8250df;
+      --red: #cf222e;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -30,6 +42,31 @@
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       min-height: 100vh;
       padding: 3rem 1.5rem;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 100;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.15rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      transform: scale(1.05);
     }
 
     header {
@@ -157,11 +194,11 @@
       border-color: rgba(248, 81, 73, 0.4);
     }
 
-    .install {
-      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-      font-size: 0.78rem;
-      background: #0d1117;
-      border: 1px solid var(--border);
+.install {
+    font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    font-size: 0.78rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
       border-radius: 6px;
       padding: 0.45rem 0.6rem;
       color: var(--green);
@@ -197,12 +234,6 @@
       margin-left: auto;
       margin-right: auto;
       line-height: 1.6;
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
     }
 
     .controls {
@@ -299,12 +330,91 @@
     .card.hidden {
       display: none;
     }
+
+    .coffee {
+      max-width: 1200px;
+      margin: 2.5rem auto 0;
+    }
+
+    .coffee-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .coffee-emoji {
+      font-size: 3rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .coffee-card h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+
+    .coffee-card p {
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.6;
+    }
+
+    .coffee-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #ff813f, #ffdc00);
+      color: #1f2328;
+      font-weight: 700;
+      padding: 0.75rem 1.8rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .coffee-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 220, 0, 0.3);
+    }
+
+    footer .copyright {
+      margin-top: 1rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 2.5rem 1rem 2rem; }
+      header h1 { font-size: 2rem; }
+      header p { font-size: 1rem; }
+      .grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+      .theme-toggle { top: 0.75rem; right: 0.75rem; width: 38px; height: 38px; }
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.6rem; }
+      .controls { gap: 0.75rem; }
+      .coffee-card { padding: 2rem 1rem; }
+      .coffee-card h2 { font-size: 1.3rem; }
+      .filters .label { display: none; }
+    }
   </style>
 </head>
 
 <body>
 
   <header>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle theme">&#127769;</button>
     <h1>Free AI CLI Tools</h1>
     <p>100% free terminal AI coding agents &amp; assistants — no subscriptions. Install with a single command.</p>
   </header>
@@ -669,12 +779,44 @@
 
   </main>
 
+  <section class="coffee">
+    <div class="coffee-card">
+      <div class="coffee-emoji">&#9749;</div>
+      <h2>Enjoyed this list?</h2>
+      <p>If you found these tools helpful, you can buy me a coffee to keep the list updated with the best free AI CLI tools!</p>
+      <a class="coffee-btn" href="https://www.buymeacoffee.com/MalikAmirJaved" target="_blank" rel="noopener">&#9749; Buy me a coffee</a>
+    </div>
+  </section>
+
   <footer>
     <p>Every install command above was verified against each tool's official docs. Free tier details may change — always
       check the tool's site for the latest setup and pricing.</p>
+    <p class="copyright">© 2026 MalikAmirJaved. All rights reserved.</p>
   </footer>
 
   <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      themeToggle.innerHTML = theme === 'dark' ? '&#127769;' : '&#9728;&#65039;';
+      localStorage.setItem('theme', theme);
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+    });
+
     const cards = Array.from(document.querySelectorAll('.card'));
     const searchInput = document.getElementById('searchInput');
     const resultsInfo = document.getElementById('resultsInfo');
