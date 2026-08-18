@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI CLI Tools</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --purple: #bc8cff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    padding: 3rem 1.5rem;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, var(--accent), var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  header p {
+    color: var(--muted);
+    font-size: 1.1rem;
+  }
+
+  header p code {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    color: var(--green);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 6px 20px rgba(88, 166, 255, 0.12);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    word-break: break-word;
+  }
+
+  .card p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .tag {
+    font-size: 0.72rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    align-self: flex-start;
+  }
+
+  .tag.free { color: var(--green); border-color: rgba(63, 185, 80, 0.4); }
+  .tag.local { color: var(--purple); border-color: rgba(188, 140, 255, 0.4); }
+
+  .install {
+    font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    font-size: 0.78rem;
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.45rem 0.6rem;
+    color: var(--green);
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+  }
+
+  .link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .link:hover { text-decoration: underline; }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    margin-top: 3rem;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 480px) {
+    header h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Free AI CLI Tools</h1>
+  <p>100% free terminal AI coding agents &amp; assistants — no subscriptions. Install with a single command.</p>
+</header>
+
+<main class="grid">
+
+  <!-- ===================== CODING AGENTS ===================== -->
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#3b82f6;">O</div>
+      <h3>OpenCode</h3>
+    </div>
+    <span class="tag free">Free &amp; open source</span>
+    <p>AI coding agent that runs entirely in your terminal. Works with any LLM provider, brings its own model runner.</p>
+    <div class="install">npm install -g opencode-ai</div>
+    <div class="card-footer">
+      <a class="link" href="https://opencode.ai" target="_blank" rel="noopener">Visit site</a>
+      <a class="link" href="https://github.com/sst/opencode" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#f59e0b;">C</div>
+      <h3>Claude Code</h3>
+    </div>
+    <span class="tag free">Free tier</span>
+    <p>Anthropic's terminal-first coding agent. Agentic coding, works on your repo directly from the command line.</p>
+    <div class="install">npm install -g @anthropic-ai/claude-code</div>
+    <div class="card-footer">
+      <a class="link" href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">Visit site</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#10b981;">C</div>
+      <h3>Codex CLI</h3>
+    </div>
+    <span class="tag free">Free tier</span>
+    <p>OpenAI's open-source coding agent for the terminal. Run it on your own machine with your own OpenAI key.</p>
+    <div class="install">npm install -g @openai/codex</div>
+    <div class="card-footer">
+      <a class="link" href="https://github.com/openai/codex" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#0a7dff;">G</div>
+      <h3>Gemini CLI</h3>
+    </div>
+    <span class="tag free">Free tier</span>
+    <p>Google's coding agent for the terminal. Powered by Gemini models, deep integration with Google accounts.</p>
+    <div class="install">npm install -g @google/gemini-cli</div>
+    <div class="card-footer">
+      <a class="link" href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#ea4335;">A</div>
+      <h3>AGY (Antigravity CLI)</h3>
+    </div>
+    <span class="tag free">Free tier</span>
+    <p>Google's next-gen terminal AI coding agent (successor to Gemini CLI). Built in Go, with subagents, skills &amp; web search.</p>
+    <div class="install">npm install -g @google/agy</div>
+    <div class="card-footer">
+      <a class="link" href="https://antigravity.google" target="_blank" rel="noopener">Visit site</a>
+      <a class="link" href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#6f42c1;">C</div>
+      <h3>GitHub Copilot CLI</h3>
+    </div>
+    <span class="tag free">Free tier</span>
+    <p>GitHub's terminal agent. Ask questions, generate and run commands — works with a free Copilot plan.</p>
+    <div class="install">npm install -g @github/copilot</div>
+    <div class="card-footer">
+      <a class="link" href="https://github.com/github/Copilot-CLI" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#7c3aed;">C</div>
+      <h3>Cline</h3>
+    </div>
+    <span class="tag free">Free &amp; open source</span>
+    <p>Autonomous coding assistant with CLI support. Plan &amp; edit code, use your own API keys, bring your own model.</p>
+    <div class="install">npm install -g @cline/cline</div>
+    <div class="card-footer">
+      <a class="link" href="https://github.com/cline/cline" target="_blank" rel="noopener">GitHub</a>
+      <a class="link" href="https://cline.bot" target="_blank" rel="noopener">Visit site</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#2563eb;">R</div>
+      <h3>Roo Code</h3>
+    </div>
+    <span class="tag free">Free &amp; open source</span>
+    <p>Fork of Cline with advanced modes, task history and personas. Open source with a fully free core.</p>
+    <div class="install">npm install -g @roo-code/cli</div>
+    <div class="card-footer">
+      <a class="link" href="https://github.com/RooCodeInc/Roo-Code" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#f97316;">F</div>
+      <h3>Freebuff</h3>
+    </div>
+    <span class="tag free">100% free (ad-supported)</span>
+    <p>Truly free terminal coding agent — no API key, no subscription. Ads in the CLI cover the model costs.</p>
+    <div class="install">npm install -g freebuff</div>
+    <div class="card-footer">
+      <a class="link" href="https://freebuff.com/cli" target="_blank" rel="noopener">Visit site</a>
+      <a class="link" href="https://github.com/CodebuffAI/codebuff" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#14b8a6;">A</div>
+      <h3>Aider</h3>
+    </div>
+    <span class="tag free">Free &amp; open source</span>
+    <p>AI pair programming in your terminal. Edits code in your local git repo with any LLM — fully open source.</p>
+    <div class="install">pip install aider-chat</div>
+    <div class="card-footer">
+      <a class="link" href="https://aider.chat" target="_blank" rel="noopener">Visit site</a>
+      <a class="link" href="https://github.com/Aider-AI/aider" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#22c55e;">G</div>
+      <h3>Goose</h3>
+    </div>
+    <span class="tag free">Free &amp; open source</span>
+    <p>Block's open-source AI agent that runs on your machine. Extensible, local-first, works with any model.</p>
+    <div class="install">curl -fsSL https://github.com/block/goose/releases/latest/download/install.sh | bash</div>
+    <div class="card-footer">
+      <a class="link" href="https://github.com/block/goose" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#dc2626;">O</div>
+      <h3>OpenHands</h3>
+    </div>
+    <span class="tag free">Free &amp; open source</span>
+    <p>AI software engineering agent (ex-OpenDevin). CLI, desktop and web — open source, bring your own model.</p>
+    <div class="install">pip install openhands</div>
+    <div class="card-footer">
+      <a class="link" href="https://github.com/All-Hands-AI/OpenHands" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#0891b2;">Q</div>
+      <h3>Qwen Code</h3>
+    </div>
+    <span class="tag free">Free tier</span>
+    <p>Alibaba's coding agent CLI for the terminal. Powered by Qwen models, agentic coding workflows.</p>
+    <div class="install">npm install -g @qwen-code/qwen-code</div>
+    <div class="card-footer">
+      <a class="link" href="https://qwen.ai" target="_blank" rel="noopener">Visit site</a>
+      <a class="link" href="https://github.com/QwenLM/Qwen-Code-CLI" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <!-- ===================== CHAT / TERMINAL ASSISTANTS ===================== -->
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#0a7dff;">S</div>
+      <h3>ShellGPT</h3>
+    </div>
+    <span class="tag free">Free &amp; open source</span>
+    <p>ChatGPT in your terminal. Generate shell commands, code, and get answers without leaving the CLI.</p>
+    <div class="install">pip install shell-gpt</div>
+    <div class="card-footer">
+      <a class="link" href="https://github.com/TheR1D/shell_gpt" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#6d28d9;">L</div>
+      <h3>LLM</h3>
+    </div>
+    <span class="tag free">Free &amp; open source</span>
+    <p>Simon Willison's simple CLI for running LLMs from the terminal. Pipe text in, get AI output out.</p>
+    <div class="install">pip install llm</div>
+    <div class="card-footer">
+      <a class="link" href="https://llm.datasette.io" target="_blank" rel="noopener">Visit site</a>
+      <a class="link" href="https://github.com/simonw/llm" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#1d4ed8;">F</div>
+      <h3>Fabric</h3>
+    </div>
+    <span class="tag free">Free &amp; open source</span>
+    <p>Open-source framework for augmenting humans with AI. Hundreds of patterns for prompt-powered workflows.</p>
+    <div class="install">pipx install fabric</div>
+    <div class="card-footer">
+      <a class="link" href="https://github.com/danielmiessler/fabric" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <!-- ===================== LOCAL / OFFLINE ===================== -->
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#7f8c8d;">O</div>
+      <h3>Ollama</h3>
+    </div>
+    <span class="tag local">Local &amp; offline</span>
+    <p>Run open-source LLMs (Llama, Qwen, Gemma, DeepSeek…) locally on your machine. 100% free, no cloud.</p>
+    <div class="install">curl -fsSL https://ollama.com/install.sh | sh</div>
+    <div class="card-footer">
+      <a class="link" href="https://ollama.com" target="_blank" rel="noopener">Visit site</a>
+      <a class="link" href="https://github.com/ollama/ollama" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#9333ea;">L</div>
+      <h3>Llamafile</h3>
+    </div>
+    <span class="tag local">Local &amp; offline</span>
+    <p>Mozilla's single-file approach to running LLMs. Download one executable that runs a model — nothing else needed.</p>
+    <div class="install">curl -L -o llama https://huggingface.co/jartine/llava-v1.5-7B-GGUF/resolve/main/llava-v1.5-7B-Q4_K.llamafile</div>
+    <div class="card-footer">
+      <a class="link" href="https://github.com/Mozilla-Ocho/llamafile" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#f43f5e;">J</div>
+      <h3>Jan</h3>
+    </div>
+    <span class="tag local">Local &amp; offline</span>
+    <p>Offline-first AI assistant that runs models 100% on your hardware. Private, free, no cloud sync.</p>
+    <div class="install">curl -s https://jan.ai/install | bash</div>
+    <div class="card-footer">
+      <a class="link" href="https://jan.ai" target="_blank" rel="noopener">Visit site</a>
+      <a class="link" href="https://github.com/menloresearch/jan" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#059669;">L</div>
+      <h3>LocalAI</h3>
+    </div>
+    <span class="tag local">Local &amp; offline</span>
+    <p>Free, open-source OpenAI-compatible local API server. Drop-in replacement that runs models on your hardware.</p>
+    <div class="install">curl https://localai.io/install.sh | sh</div>
+    <div class="card-footer">
+      <a class="link" href="https://localai.io" target="_blank" rel="noopener">Visit site</a>
+      <a class="link" href="https://github.com/mudler/LocalAI" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <!-- ===================== EDITOR INTEGRATIONS ===================== -->
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#0a84ff;">C</div>
+      <h3>Cursor</h3>
+    </div>
+    <span class="tag free">Free plan</span>
+    <p>AI code editor with a free plan. CLI-powered agent mode, inline editing and chat built right in.</p>
+    <div class="install">curl -fsSL https://download.cursor.sh/linux/appImage/x64 | bash</div>
+    <div class="card-footer">
+      <a class="link" href="https://cursor.com" target="_blank" rel="noopener">Visit site</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <div class="logo" style="background:#15803d;">C</div>
+      <h3>Continue</h3>
+    </div>
+    <span class="tag free">Free &amp; open source</span>
+    <p>Open-source AI assistant for VS Code &amp; JetBrains. Bring any model or API key — the core is free forever.</p>
+    <div class="install">npx opencode-continue</div>
+    <div class="card-footer">
+      <a class="link" href="https://continue.dev" target="_blank" rel="noopener">Visit site</a>
+      <a class="link" href="https://github.com/continuedev/continue" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>All tools listed have a genuinely free tier or are fully open source. Install commands may vary by platform — check each tool's site for the latest setup.</p>
+</footer>
+
+</body>
+</html>
