@@ -121,6 +121,22 @@
     align-self: flex-start;
   }
 
+  .best-for {
+    font-size: 0.82rem;
+    color: var(--accent);
+    display: flex;
+    gap: 0.4rem;
+    align-items: baseline;
+  }
+
+  .best-for span {
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+  }
+
   .tag.free { color: var(--green); border-color: rgba(63, 185, 80, 0.4); }
   .tag.local { color: var(--purple); border-color: rgba(188, 140, 255, 0.4); }
   .tag.deprecated { color: var(--red); border-color: rgba(248, 81, 73, 0.4); }
@@ -188,6 +204,7 @@
     </div>
     <span class="tag free">Free &amp; open source</span>
     <p>AI coding agent that runs entirely in your terminal. Works with any LLM provider, brings its own model runner.</p>
+    <div class="best-for"><span>Best for</span> any-LLM terminal coding, daily driver</div>
     <div class="install">npm install -g opencode-ai</div>
     <div class="card-footer">
       <a class="link" href="https://opencode.ai" target="_blank" rel="noopener">Visit site</a>
@@ -202,6 +219,7 @@
     </div>
     <span class="tag free">Free tier</span>
     <p>Anthropic's terminal-first coding agent. Agentic coding, works on your repo directly from the command line.</p>
+    <div class="best-for"><span>Best for</span> complex multi-file tasks, production code</div>
     <div class="install">npm install -g @anthropic-ai/claude-code</div>
     <div class="card-footer">
       <a class="link" href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">Visit site</a>
@@ -215,6 +233,7 @@
     </div>
     <span class="tag free">Free tier</span>
     <p>OpenAI's open-source coding agent for the terminal. Run it on your own machine with your own OpenAI key.</p>
+    <div class="best-for"><span>Best for</span> OpenAI users, scriptable automation</div>
     <div class="install">npm install -g @openai/codex</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/openai/codex" target="_blank" rel="noopener">GitHub</a>
@@ -228,6 +247,7 @@
     </div>
     <span class="tag deprecated">Retired — use AGY</span>
     <p>Google's original terminal coding agent. Retired in June 2026 and succeeded by AGY (Antigravity CLI).</p>
+    <div class="best-for"><span>Best for</span> legacy scripts &amp; migration to AGY</div>
     <div class="install">npm install -g @google/gemini-cli</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">GitHub</a>
@@ -241,6 +261,7 @@
     </div>
     <span class="tag free">Free tier</span>
     <p>Google's current terminal AI coding agent (replaces Gemini CLI). Built in Go, with subagents, skills &amp; web search.</p>
+    <div class="best-for"><span>Best for</span> Google users, subagents &amp; research</div>
     <div class="install">curl -fsSL https://antigravity.google/cli/install.sh | bash</div>
     <div class="card-footer">
       <a class="link" href="https://antigravity.google" target="_blank" rel="noopener">Visit site</a>
@@ -254,6 +275,7 @@
     </div>
     <span class="tag free">Free tier</span>
     <p>GitHub's terminal agent. Ask questions, generate and run commands — works with a free Copilot plan.</p>
+    <div class="best-for"><span>Best for</span> GitHub workflows, quick command help</div>
     <div class="install">npm install -g @github/copilot</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/github/Copilot-CLI" target="_blank" rel="noopener">GitHub</a>
@@ -267,6 +289,7 @@
     </div>
     <span class="tag free">Free &amp; open source</span>
     <p>Autonomous coding assistant with a full terminal CLI. Plan &amp; edit code, bring your own model and API key.</p>
+    <div class="best-for"><span>Best for</span> bring-your-own-key, full autonomy</div>
     <div class="install">npm install -g cline</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/cline/cline" target="_blank" rel="noopener">GitHub</a>
@@ -281,6 +304,7 @@
     </div>
     <span class="tag free">Free &amp; open source</span>
     <p>VS Code extension (no separate CLI). Fork of Cline with advanced modes, task history and personas.</p>
+    <div class="best-for"><span>Best for</span> VS Code users, custom modes &amp; personas</div>
     <div class="install">VS Code → Extensions → search "Roo Code"</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/RooCodeInc/Roo-Code" target="_blank" rel="noopener">GitHub</a>
@@ -295,6 +319,7 @@
     </div>
     <span class="tag free">100% free (ad-supported)</span>
     <p>Truly free terminal coding agent — no API key, no subscription. Ads in the CLI cover the model costs.</p>
+    <div class="best-for"><span>Best for</span> $0 budget, no-setup coding agent</div>
     <div class="install">npm install -g freebuff</div>
     <div class="card-footer">
       <a class="link" href="https://freebuff.com/cli" target="_blank" rel="noopener">Visit site</a>
@@ -309,6 +334,7 @@
     </div>
     <span class="tag free">Free &amp; open source</span>
     <p>AI pair programming in your terminal. Edits code in your local git repo with any LLM — fully open source.</p>
+    <div class="best-for"><span>Best for</span> git-based pair programming, open source</div>
     <div class="install">pip install aider-chat</div>
     <div class="card-footer">
       <a class="link" href="https://aider.chat" target="_blank" rel="noopener">Visit site</a>
@@ -323,6 +349,7 @@
     </div>
     <span class="tag free">Free &amp; open source</span>
     <p>Block's open-source AI agent that runs on your machine. Extensible, local-first, works with any model.</p>
+    <div class="best-for"><span>Best for</span> automations, MCP extensions, local AI</div>
     <div class="install">curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh | bash</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/block/goose" target="_blank" rel="noopener">GitHub</a>
@@ -336,6 +363,7 @@
     </div>
     <span class="tag free">Free &amp; open source</span>
     <p>AI software engineering agent (ex-OpenDevin). Official CLI via pip — open source, bring your own model.</p>
+    <div class="best-for"><span>Best for</span> large refactors, autonomous projects</div>
     <div class="install">pip install openhands</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/All-Hands-AI/OpenHands" target="_blank" rel="noopener">GitHub</a>
@@ -349,6 +377,7 @@
     </div>
     <span class="tag free">Free &amp; open source</span>
     <p>Alibaba's open-source coding agent CLI for the terminal. Powered by Qwen models, agentic coding workflows.</p>
+    <div class="best-for"><span>Best for</span> Qwen models, non-interactive automation</div>
     <div class="install">npm install -g @qwen-code/qwen-code</div>
     <div class="card-footer">
       <a class="link" href="https://qwen.ai" target="_blank" rel="noopener">Visit site</a>
@@ -365,6 +394,7 @@
     </div>
     <span class="tag free">Free &amp; open source</span>
     <p>ChatGPT in your terminal. Generate shell commands, code, and get answers without leaving the CLI.</p>
+    <div class="best-for"><span>Best for</span> shell commands, quick Q&amp;A in terminal</div>
     <div class="install">pip install shell-gpt</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/TheR1D/shell_gpt" target="_blank" rel="noopener">GitHub</a>
@@ -378,6 +408,7 @@
     </div>
     <span class="tag free">Free &amp; open source</span>
     <p>Simon Willison's simple CLI for running LLMs from the terminal. Pipe text in, get AI output out.</p>
+    <div class="best-for"><span>Best for</span> piping text, scripting &amp; data workflows</div>
     <div class="install">pip install llm</div>
     <div class="card-footer">
       <a class="link" href="https://llm.datasette.io" target="_blank" rel="noopener">Visit site</a>
@@ -392,6 +423,7 @@
     </div>
     <span class="tag free">Free &amp; open source</span>
     <p>Open-source framework for augmenting humans with AI. Hundreds of patterns for prompt-powered workflows.</p>
+    <div class="best-for"><span>Best for</span> text analysis, summarization pipelines</div>
     <div class="install">pipx install fabric</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/danielmiessler/fabric" target="_blank" rel="noopener">GitHub</a>
@@ -407,6 +439,7 @@
     </div>
     <span class="tag local">Local &amp; offline</span>
     <p>Run open-source LLMs (Llama, Qwen, Gemma, DeepSeek…) locally on your machine. 100% free, no cloud.</p>
+    <div class="best-for"><span>Best for</span> local models, privacy, offline LLMs</div>
     <div class="install">curl -fsSL https://ollama.com/install.sh | sh</div>
     <div class="card-footer">
       <a class="link" href="https://ollama.com" target="_blank" rel="noopener">Visit site</a>
@@ -421,6 +454,7 @@
     </div>
     <span class="tag local">Local &amp; offline</span>
     <p>Mozilla's single-file way to run LLMs. Download one executable that runs a model — nothing else needed.</p>
+    <div class="best-for"><span>Best for</span> zero-dependency local inference</div>
     <div class="install">chmod +x ./model.llamafile && ./model.llamafile</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/Mozilla-Ocho/llamafile" target="_blank" rel="noopener">GitHub</a>
@@ -434,6 +468,7 @@
     </div>
     <span class="tag local">Local &amp; offline</span>
     <p>Offline-first AI assistant that runs models 100% on your hardware. Private, free, no cloud sync.</p>
+    <div class="best-for"><span>Best for</span> private local chat, desktop AI</div>
     <div class="install">Download .deb / .dmg / .exe from jan.ai</div>
     <div class="card-footer">
       <a class="link" href="https://jan.ai" target="_blank" rel="noopener">Visit site</a>
@@ -448,6 +483,7 @@
     </div>
     <span class="tag local">Local &amp; offline</span>
     <p>Free, open-source OpenAI-compatible local API server. Drop-in replacement that runs models on your hardware.</p>
+    <div class="best-for"><span>Best for</span> local OpenAI-compatible API server</div>
     <div class="install">curl https://localai.io/install.sh | sh</div>
     <div class="card-footer">
       <a class="link" href="https://localai.io" target="_blank" rel="noopener">Visit site</a>
@@ -464,6 +500,7 @@
     </div>
     <span class="tag free">Free plan</span>
     <p>AI code editor with a free plan. Agent mode, inline editing and chat built right in. Desktop app, not a CLI.</p>
+    <div class="best-for"><span>Best for</span> GUI editing, in-editor AI agents</div>
     <div class="install">Download from cursor.com</div>
     <div class="card-footer">
       <a class="link" href="https://cursor.com" target="_blank" rel="noopener">Visit site</a>
@@ -477,6 +514,7 @@
     </div>
     <span class="tag free">Free &amp; open source</span>
     <p>Open-source AI assistant for VS Code &amp; JetBrains. Bring any model or API key — the core is free forever.</p>
+    <div class="best-for"><span>Best for</span> IDE autocomplete, any model/key</div>
     <div class="install">VS Code → Extensions → search "Continue"</div>
     <div class="card-footer">
       <a class="link" href="https://continue.dev" target="_blank" rel="noopener">Visit site</a>
