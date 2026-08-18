@@ -14,6 +14,7 @@
     --accent: #58a6ff;
     --green: #3fb950;
     --purple: #bc8cff;
+    --red: #f85149;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -122,6 +123,7 @@
 
   .tag.free { color: var(--green); border-color: rgba(63, 185, 80, 0.4); }
   .tag.local { color: var(--purple); border-color: rgba(188, 140, 255, 0.4); }
+  .tag.deprecated { color: var(--red); border-color: rgba(248, 81, 73, 0.4); }
 
   .install {
     font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
@@ -157,6 +159,10 @@
     color: var(--muted);
     margin-top: 3rem;
     font-size: 0.85rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
   }
 
   @media (max-width: 480px) {
@@ -220,8 +226,8 @@
       <div class="logo" style="background:#0a7dff;">G</div>
       <h3>Gemini CLI</h3>
     </div>
-    <span class="tag free">Free tier</span>
-    <p>Google's coding agent for the terminal. Powered by Gemini models, deep integration with Google accounts.</p>
+    <span class="tag deprecated">Retired — use AGY</span>
+    <p>Google's original terminal coding agent. Retired in June 2026 and succeeded by AGY (Antigravity CLI).</p>
     <div class="install">npm install -g @google/gemini-cli</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">GitHub</a>
@@ -234,11 +240,10 @@
       <h3>AGY (Antigravity CLI)</h3>
     </div>
     <span class="tag free">Free tier</span>
-    <p>Google's next-gen terminal AI coding agent (successor to Gemini CLI). Built in Go, with subagents, skills &amp; web search.</p>
-    <div class="install">npm install -g @google/agy</div>
+    <p>Google's current terminal AI coding agent (replaces Gemini CLI). Built in Go, with subagents, skills &amp; web search.</p>
+    <div class="install">curl -fsSL https://antigravity.google/cli/install.sh | bash</div>
     <div class="card-footer">
       <a class="link" href="https://antigravity.google" target="_blank" rel="noopener">Visit site</a>
-      <a class="link" href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
 
@@ -261,8 +266,8 @@
       <h3>Cline</h3>
     </div>
     <span class="tag free">Free &amp; open source</span>
-    <p>Autonomous coding assistant with CLI support. Plan &amp; edit code, use your own API keys, bring your own model.</p>
-    <div class="install">npm install -g @cline/cline</div>
+    <p>Autonomous coding assistant with a full terminal CLI. Plan &amp; edit code, bring your own model and API key.</p>
+    <div class="install">npm install -g cline</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/cline/cline" target="_blank" rel="noopener">GitHub</a>
       <a class="link" href="https://cline.bot" target="_blank" rel="noopener">Visit site</a>
@@ -275,10 +280,11 @@
       <h3>Roo Code</h3>
     </div>
     <span class="tag free">Free &amp; open source</span>
-    <p>Fork of Cline with advanced modes, task history and personas. Open source with a fully free core.</p>
-    <div class="install">npm install -g @roo-code/cli</div>
+    <p>VS Code extension (no separate CLI). Fork of Cline with advanced modes, task history and personas.</p>
+    <div class="install">VS Code → Extensions → search "Roo Code"</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/RooCodeInc/Roo-Code" target="_blank" rel="noopener">GitHub</a>
+      <a class="link" href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline" target="_blank" rel="noopener">Marketplace</a>
     </div>
   </div>
 
@@ -317,7 +323,7 @@
     </div>
     <span class="tag free">Free &amp; open source</span>
     <p>Block's open-source AI agent that runs on your machine. Extensible, local-first, works with any model.</p>
-    <div class="install">curl -fsSL https://github.com/block/goose/releases/latest/download/install.sh | bash</div>
+    <div class="install">curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh | bash</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/block/goose" target="_blank" rel="noopener">GitHub</a>
     </div>
@@ -329,7 +335,7 @@
       <h3>OpenHands</h3>
     </div>
     <span class="tag free">Free &amp; open source</span>
-    <p>AI software engineering agent (ex-OpenDevin). CLI, desktop and web — open source, bring your own model.</p>
+    <p>AI software engineering agent (ex-OpenDevin). Official CLI via pip — open source, bring your own model.</p>
     <div class="install">pip install openhands</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/All-Hands-AI/OpenHands" target="_blank" rel="noopener">GitHub</a>
@@ -341,8 +347,8 @@
       <div class="logo" style="background:#0891b2;">Q</div>
       <h3>Qwen Code</h3>
     </div>
-    <span class="tag free">Free tier</span>
-    <p>Alibaba's coding agent CLI for the terminal. Powered by Qwen models, agentic coding workflows.</p>
+    <span class="tag free">Free &amp; open source</span>
+    <p>Alibaba's open-source coding agent CLI for the terminal. Powered by Qwen models, agentic coding workflows.</p>
     <div class="install">npm install -g @qwen-code/qwen-code</div>
     <div class="card-footer">
       <a class="link" href="https://qwen.ai" target="_blank" rel="noopener">Visit site</a>
@@ -414,8 +420,8 @@
       <h3>Llamafile</h3>
     </div>
     <span class="tag local">Local &amp; offline</span>
-    <p>Mozilla's single-file approach to running LLMs. Download one executable that runs a model — nothing else needed.</p>
-    <div class="install">curl -L -o llama https://huggingface.co/jartine/llava-v1.5-7B-GGUF/resolve/main/llava-v1.5-7B-Q4_K.llamafile</div>
+    <p>Mozilla's single-file way to run LLMs. Download one executable that runs a model — nothing else needed.</p>
+    <div class="install">chmod +x ./model.llamafile && ./model.llamafile</div>
     <div class="card-footer">
       <a class="link" href="https://github.com/Mozilla-Ocho/llamafile" target="_blank" rel="noopener">GitHub</a>
     </div>
@@ -428,10 +434,10 @@
     </div>
     <span class="tag local">Local &amp; offline</span>
     <p>Offline-first AI assistant that runs models 100% on your hardware. Private, free, no cloud sync.</p>
-    <div class="install">curl -s https://jan.ai/install | bash</div>
+    <div class="install">Download .deb / .dmg / .exe from jan.ai</div>
     <div class="card-footer">
       <a class="link" href="https://jan.ai" target="_blank" rel="noopener">Visit site</a>
-      <a class="link" href="https://github.com/menloresearch/jan" target="_blank" rel="noopener">GitHub</a>
+      <a class="link" href="https://github.com/janhq/jan" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
 
@@ -457,8 +463,8 @@
       <h3>Cursor</h3>
     </div>
     <span class="tag free">Free plan</span>
-    <p>AI code editor with a free plan. CLI-powered agent mode, inline editing and chat built right in.</p>
-    <div class="install">curl -fsSL https://download.cursor.sh/linux/appImage/x64 | bash</div>
+    <p>AI code editor with a free plan. Agent mode, inline editing and chat built right in. Desktop app, not a CLI.</p>
+    <div class="install">Download from cursor.com</div>
     <div class="card-footer">
       <a class="link" href="https://cursor.com" target="_blank" rel="noopener">Visit site</a>
     </div>
@@ -471,7 +477,7 @@
     </div>
     <span class="tag free">Free &amp; open source</span>
     <p>Open-source AI assistant for VS Code &amp; JetBrains. Bring any model or API key — the core is free forever.</p>
-    <div class="install">npx opencode-continue</div>
+    <div class="install">VS Code → Extensions → search "Continue"</div>
     <div class="card-footer">
       <a class="link" href="https://continue.dev" target="_blank" rel="noopener">Visit site</a>
       <a class="link" href="https://github.com/continuedev/continue" target="_blank" rel="noopener">GitHub</a>
@@ -481,7 +487,7 @@
 </main>
 
 <footer>
-  <p>All tools listed have a genuinely free tier or are fully open source. Install commands may vary by platform — check each tool's site for the latest setup.</p>
+  <p>Every install command above was verified against each tool's official docs. Free tier details may change — always check the tool's site for the latest setup and pricing.</p>
 </footer>
 
 </body>
