@@ -1,532 +1,739 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free AI CLI Tools</title>
-<style>
-  :root {
-    --bg: #0d1117;
-    --bg-card: #161b22;
-    --border: #30363d;
-    --text: #e6edf3;
-    --muted: #8b949e;
-    --accent: #58a6ff;
-    --green: #3fb950;
-    --purple: #bc8cff;
-    --red: #f85149;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free AI CLI Tools</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg-card: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --green: #3fb950;
+      --purple: #bc8cff;
+      --red: #f85149;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    min-height: 100vh;
-    padding: 3rem 1.5rem;
-  }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 3rem 1.5rem;
+    }
 
-  header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
 
-  header h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(90deg, var(--accent), var(--purple));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, var(--accent), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-  header p {
-    color: var(--muted);
-    font-size: 1.1rem;
-  }
+    header p {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
 
-  header p code {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    padding: 0.1rem 0.4rem;
-    border-radius: 4px;
-    color: var(--green);
-  }
+    header p code {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      color: var(--green);
+    }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.25rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-  .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-  }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
 
-  .card:hover {
-    transform: translateY(-3px);
-    border-color: var(--accent);
-    box-shadow: 0 6px 20px rgba(88, 166, 255, 0.12);
-  }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 6px 20px rgba(88, 166, 255, 0.12);
+    }
 
-  .card-top {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
 
-  .logo {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 0.95rem;
-    color: #fff;
-    flex-shrink: 0;
-  }
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
 
-  .card h3 {
-    font-size: 1.15rem;
-    font-weight: 700;
-    word-break: break-word;
-  }
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      word-break: break-word;
+    }
 
-  .card p {
-    color: var(--muted);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    flex: 1;
-  }
+    .card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      flex: 1;
+    }
 
-  .tag {
-    font-size: 0.72rem;
-    padding: 0.15rem 0.5rem;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    align-self: flex-start;
-  }
+    .tag {
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      align-self: flex-start;
+    }
 
-  .best-for {
-    font-size: 0.82rem;
-    color: var(--accent);
-    display: flex;
-    gap: 0.4rem;
-    align-items: baseline;
-  }
+    .best-for {
+      font-size: 0.82rem;
+      color: var(--accent);
+      display: flex;
+      gap: 0.4rem;
+      align-items: baseline;
+    }
 
-  .best-for span {
-    color: var(--muted);
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.68rem;
-    letter-spacing: 0.05em;
-  }
+    .best-for span {
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.68rem;
+      letter-spacing: 0.05em;
+    }
 
-  .tag.free { color: var(--green); border-color: rgba(63, 185, 80, 0.4); }
-  .tag.local { color: var(--purple); border-color: rgba(188, 140, 255, 0.4); }
-  .tag.deprecated { color: var(--red); border-color: rgba(248, 81, 73, 0.4); }
+    .tag.free {
+      color: var(--green);
+      border-color: rgba(63, 185, 80, 0.4);
+    }
 
-  .install {
-    font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-    font-size: 0.78rem;
-    background: #0d1117;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.45rem 0.6rem;
-    color: var(--green);
-    overflow-x: auto;
-    white-space: nowrap;
-  }
+    .tag.local {
+      color: var(--purple);
+      border-color: rgba(188, 140, 255, 0.4);
+    }
 
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    margin-top: 0.3rem;
-  }
+    .tag.deprecated {
+      color: var(--red);
+      border-color: rgba(248, 81, 73, 0.4);
+    }
 
-  .link {
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-  }
+    .install {
+      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+      font-size: 0.78rem;
+      background: #0d1117;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.45rem 0.6rem;
+      color: var(--green);
+      overflow-x: auto;
+      white-space: nowrap;
+    }
 
-  .link:hover { text-decoration: underline; }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+    }
 
-  footer {
-    text-align: center;
-    color: var(--muted);
-    margin-top: 3rem;
-    font-size: 0.85rem;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
-  }
+    .link {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
 
-  @media (max-width: 480px) {
-    header h1 { font-size: 1.8rem; }
-  }
-</style>
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    .controls {
+      max-width: 1200px;
+      margin: 0 auto 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent);
+    }
+
+    .search-box input::placeholder {
+      color: var(--muted);
+    }
+
+    .search-box .icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .filters .label {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-right: 0.25rem;
+    }
+
+    .fbtn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s ease;
+    }
+
+    .fbtn:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .fbtn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .results-info {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      min-height: 1.2rem;
+    }
+
+    .card.hidden {
+      display: none;
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <h1>Free AI CLI Tools</h1>
-  <p>100% free terminal AI coding agents &amp; assistants — no subscriptions. Install with a single command.</p>
-</header>
+  <header>
+    <h1>Free AI CLI Tools</h1>
+    <p>100% free terminal AI coding agents &amp; assistants — no subscriptions. Install with a single command.</p>
+  </header>
 
-<main class="grid">
-
-  <!-- ===================== CODING AGENTS ===================== -->
-
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#3b82f6;">O</div>
-      <h3>OpenCode</h3>
+  <div class="controls">
+    <div class="search-box">
+      <span class="icon">&#128269;</span>
+      <input type="text" id="searchInput" placeholder="Search tools, tags, install commands…">
     </div>
-    <span class="tag free">Free &amp; open source</span>
-    <p>AI coding agent that runs entirely in your terminal. Works with any LLM provider, brings its own model runner.</p>
-    <div class="best-for"><span>Best for</span> any-LLM terminal coding, daily driver</div>
-    <div class="install">npm install -g opencode-ai</div>
-    <div class="card-footer">
-      <a class="link" href="https://opencode.ai" target="_blank" rel="noopener">Visit site</a>
-      <a class="link" href="https://github.com/sst/opencode" target="_blank" rel="noopener">GitHub</a>
+    <div class="filters">
+      <span class="label">Category:</span>
+      <button class="fbtn active" data-filter="cat" data-value="all">All</button>
+      <button class="fbtn" data-filter="cat" data-value="agent">Coding Agents</button>
+      <button class="fbtn" data-filter="cat" data-value="chat">Chat / Assistants</button>
+      <button class="fbtn" data-filter="cat" data-value="local">Local / Offline</button>
+      <button class="fbtn" data-filter="cat" data-value="editor">Editor Integrations</button>
+      <span class="label" style="margin-left: 0.5rem;">Tag:</span>
+      <button class="fbtn" data-filter="tag" data-value="Free &amp; open source">Free &amp; open source</button>
+      <button class="fbtn" data-filter="tag" data-value="Free tier">Free tier</button>
+      <button class="fbtn" data-filter="tag" data-value="Local &amp; offline">Local &amp; offline</button>
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#f59e0b;">C</div>
-      <h3>Claude Code</h3>
-    </div>
-    <span class="tag free">Free tier</span>
-    <p>Anthropic's terminal-first coding agent. Agentic coding, works on your repo directly from the command line.</p>
-    <div class="best-for"><span>Best for</span> complex multi-file tasks, production code</div>
-    <div class="install">npm install -g @anthropic-ai/claude-code</div>
-    <div class="card-footer">
-      <a class="link" href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">Visit site</a>
-    </div>
-  </div>
+  <p class="results-info" id="resultsInfo"></p>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#10b981;">C</div>
-      <h3>Codex CLI</h3>
-    </div>
-    <span class="tag free">Free tier</span>
-    <p>OpenAI's open-source coding agent for the terminal. Run it on your own machine with your own OpenAI key.</p>
-    <div class="best-for"><span>Best for</span> OpenAI users, scriptable automation</div>
-    <div class="install">npm install -g @openai/codex</div>
-    <div class="card-footer">
-      <a class="link" href="https://github.com/openai/codex" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
+  <main class="grid">
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#0a7dff;">G</div>
-      <h3>Gemini CLI</h3>
-    </div>
-    <span class="tag deprecated">Retired — use AGY</span>
-    <p>Google's original terminal coding agent. Retired in June 2026 and succeeded by AGY (Antigravity CLI).</p>
-    <div class="best-for"><span>Best for</span> legacy scripts &amp; migration to AGY</div>
-    <div class="install">npm install -g @google/gemini-cli</div>
-    <div class="card-footer">
-      <a class="link" href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
+    <!-- ===================== CODING AGENTS ===================== -->
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#ea4335;">A</div>
-      <h3>AGY (Antigravity CLI)</h3>
+    <div class="card" data-cat="agent">
+      <div class="card-top">
+        <div class="logo" style="background:#3b82f6;">O</div>
+        <h3>OpenCode</h3>
+      </div>
+      <span class="tag free">Free &amp; open source</span>
+      <p>AI coding agent that runs entirely in your terminal. Works with any LLM provider, brings its own model runner.
+      </p>
+      <div class="best-for"><span>Best for</span> any-LLM terminal coding, daily driver</div>
+      <div class="install">npm install -g opencode-ai</div>
+      <div class="card-footer">
+        <a class="link" href="https://opencode.ai" target="_blank" rel="noopener">Visit site</a>
+        <a class="link" href="https://github.com/sst/opencode" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <span class="tag free">Free tier</span>
-    <p>Google's current terminal AI coding agent (replaces Gemini CLI). Built in Go, with subagents, skills &amp; web search.</p>
-    <div class="best-for"><span>Best for</span> Google users, subagents &amp; research</div>
-    <div class="install">curl -fsSL https://antigravity.google/cli/install.sh | bash</div>
-    <div class="card-footer">
-      <a class="link" href="https://antigravity.google" target="_blank" rel="noopener">Visit site</a>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#6f42c1;">C</div>
-      <h3>GitHub Copilot CLI</h3>
+    <div class="card" data-cat="agent">
+      <div class="card-top">
+        <div class="logo" style="background:#f59e0b;">C</div>
+        <h3>Claude Code</h3>
+      </div>
+      <span class="tag free">Free tier</span>
+      <p>Anthropic's terminal-first coding agent. Agentic coding, works on your repo directly from the command line.</p>
+      <div class="best-for"><span>Best for</span> complex multi-file tasks, production code</div>
+      <div class="install">npm install -g @anthropic-ai/claude-code</div>
+      <div class="card-footer">
+        <a class="link" href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">Visit site</a>
+      </div>
     </div>
-    <span class="tag free">Free tier</span>
-    <p>GitHub's terminal agent. Ask questions, generate and run commands — works with a free Copilot plan.</p>
-    <div class="best-for"><span>Best for</span> GitHub workflows, quick command help</div>
-    <div class="install">npm install -g @github/copilot</div>
-    <div class="card-footer">
-      <a class="link" href="https://github.com/github/Copilot-CLI" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#7c3aed;">C</div>
-      <h3>Cline</h3>
+    <div class="card" data-cat="agent">
+      <div class="card-top">
+        <div class="logo" style="background:#10b981;">C</div>
+        <h3>Codex CLI</h3>
+      </div>
+      <span class="tag free">Free tier</span>
+      <p>OpenAI's open-source coding agent for the terminal. Run it on your own machine with your own OpenAI key.</p>
+      <div class="best-for"><span>Best for</span> OpenAI users, scriptable automation</div>
+      <div class="install">npm install -g @openai/codex</div>
+      <div class="card-footer">
+        <a class="link" href="https://github.com/openai/codex" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <span class="tag free">Free &amp; open source</span>
-    <p>Autonomous coding assistant with a full terminal CLI. Plan &amp; edit code, bring your own model and API key.</p>
-    <div class="best-for"><span>Best for</span> bring-your-own-key, full autonomy</div>
-    <div class="install">npm install -g cline</div>
-    <div class="card-footer">
-      <a class="link" href="https://github.com/cline/cline" target="_blank" rel="noopener">GitHub</a>
-      <a class="link" href="https://cline.bot" target="_blank" rel="noopener">Visit site</a>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#2563eb;">R</div>
-      <h3>Roo Code</h3>
+    <div class="card" data-cat="agent">
+      <div class="card-top">
+        <div class="logo" style="background:#0a7dff;">G</div>
+        <h3>Gemini CLI</h3>
+      </div>
+      <span class="tag deprecated">Retired — use AGY</span>
+      <p>Google's original terminal coding agent. Retired in June 2026 and succeeded by AGY (Antigravity CLI).</p>
+      <div class="best-for"><span>Best for</span> legacy scripts &amp; migration to AGY</div>
+      <div class="install">npm install -g @google/gemini-cli</div>
+      <div class="card-footer">
+        <a class="link" href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <span class="tag free">Free &amp; open source</span>
-    <p>VS Code extension (no separate CLI). Fork of Cline with advanced modes, task history and personas.</p>
-    <div class="best-for"><span>Best for</span> VS Code users, custom modes &amp; personas</div>
-    <div class="install">VS Code → Extensions → search "Roo Code"</div>
-    <div class="card-footer">
-      <a class="link" href="https://github.com/RooCodeInc/Roo-Code" target="_blank" rel="noopener">GitHub</a>
-      <a class="link" href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline" target="_blank" rel="noopener">Marketplace</a>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#f97316;">F</div>
-      <h3>Freebuff</h3>
+    <div class="card" data-cat="agent">
+      <div class="card-top">
+        <div class="logo" style="background:#ea4335;">A</div>
+        <h3>AGY (Antigravity CLI)</h3>
+      </div>
+      <span class="tag free">Free tier</span>
+      <p>Google's current terminal AI coding agent (replaces Gemini CLI). Built in Go, with subagents, skills &amp; web
+        search.</p>
+      <div class="best-for"><span>Best for</span> Google users, subagents &amp; research</div>
+      <div class="install">curl -fsSL https://antigravity.google/cli/install.sh | bash</div>
+      <div class="card-footer">
+        <a class="link" href="https://antigravity.google" target="_blank" rel="noopener">Visit site</a>
+      </div>
     </div>
-    <span class="tag free">100% free (ad-supported)</span>
-    <p>Truly free terminal coding agent — no API key, no subscription. Ads in the CLI cover the model costs.</p>
-    <div class="best-for"><span>Best for</span> $0 budget, no-setup coding agent</div>
-    <div class="install">npm install -g freebuff</div>
-    <div class="card-footer">
-      <a class="link" href="https://freebuff.com/cli" target="_blank" rel="noopener">Visit site</a>
-      <a class="link" href="https://github.com/CodebuffAI/codebuff" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#14b8a6;">A</div>
-      <h3>Aider</h3>
+    <div class="card" data-cat="agent">
+      <div class="card-top">
+        <div class="logo" style="background:#6f42c1;">C</div>
+        <h3>GitHub Copilot CLI</h3>
+      </div>
+      <span class="tag free">Free tier</span>
+      <p>GitHub's terminal agent. Ask questions, generate and run commands — works with a free Copilot plan.</p>
+      <div class="best-for"><span>Best for</span> GitHub workflows, quick command help</div>
+      <div class="install">npm install -g @github/copilot</div>
+      <div class="card-footer">
+        <a class="link" href="https://github.com/github/Copilot-CLI" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <span class="tag free">Free &amp; open source</span>
-    <p>AI pair programming in your terminal. Edits code in your local git repo with any LLM — fully open source.</p>
-    <div class="best-for"><span>Best for</span> git-based pair programming, open source</div>
-    <div class="install">pip install aider-chat</div>
-    <div class="card-footer">
-      <a class="link" href="https://aider.chat" target="_blank" rel="noopener">Visit site</a>
-      <a class="link" href="https://github.com/Aider-AI/aider" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#22c55e;">G</div>
-      <h3>Goose</h3>
+    <div class="card" data-cat="agent">
+      <div class="card-top">
+        <div class="logo" style="background:#7c3aed;">C</div>
+        <h3>Cline</h3>
+      </div>
+      <span class="tag free">Free &amp; open source</span>
+      <p>Autonomous coding assistant with a full terminal CLI. Plan &amp; edit code, bring your own model and API key.
+      </p>
+      <div class="best-for"><span>Best for</span> bring-your-own-key, full autonomy</div>
+      <div class="install">npm install -g cline</div>
+      <div class="card-footer">
+        <a class="link" href="https://github.com/cline/cline" target="_blank" rel="noopener">GitHub</a>
+        <a class="link" href="https://cline.bot" target="_blank" rel="noopener">Visit site</a>
+      </div>
     </div>
-    <span class="tag free">Free &amp; open source</span>
-    <p>Block's open-source AI agent that runs on your machine. Extensible, local-first, works with any model.</p>
-    <div class="best-for"><span>Best for</span> automations, MCP extensions, local AI</div>
-    <div class="install">curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh | bash</div>
-    <div class="card-footer">
-      <a class="link" href="https://github.com/block/goose" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#dc2626;">O</div>
-      <h3>OpenHands</h3>
+    <div class="card" data-cat="agent">
+      <div class="card-top">
+        <div class="logo" style="background:#2563eb;">R</div>
+        <h3>Roo Code</h3>
+      </div>
+      <span class="tag free">Free &amp; open source</span>
+      <p>VS Code extension (no separate CLI). Fork of Cline with advanced modes, task history and personas.</p>
+      <div class="best-for"><span>Best for</span> VS Code users, custom modes &amp; personas</div>
+      <div class="install">VS Code → Extensions → search "Roo Code"</div>
+      <div class="card-footer">
+        <a class="link" href="https://github.com/RooCodeInc/Roo-Code" target="_blank" rel="noopener">GitHub</a>
+        <a class="link" href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline"
+          target="_blank" rel="noopener">Marketplace</a>
+      </div>
     </div>
-    <span class="tag free">Free &amp; open source</span>
-    <p>AI software engineering agent (ex-OpenDevin). Official CLI via pip — open source, bring your own model.</p>
-    <div class="best-for"><span>Best for</span> large refactors, autonomous projects</div>
-    <div class="install">pip install openhands</div>
-    <div class="card-footer">
-      <a class="link" href="https://github.com/All-Hands-AI/OpenHands" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#0891b2;">Q</div>
-      <h3>Qwen Code</h3>
+    <div class="card" data-cat="agent">
+      <div class="card-top">
+        <div class="logo" style="background:#f97316;">F</div>
+        <h3>Freebuff</h3>
+      </div>
+      <span class="tag free">100% free (ad-supported)</span>
+      <p>Truly free terminal coding agent — no API key, no subscription. Ads in the CLI cover the model costs.</p>
+      <div class="best-for"><span>Best for</span> $0 budget, no-setup coding agent</div>
+      <div class="install">npm install -g freebuff</div>
+      <div class="card-footer">
+        <a class="link" href="https://freebuff.com/cli" target="_blank" rel="noopener">Visit site</a>
+        <a class="link" href="https://github.com/CodebuffAI/codebuff" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <span class="tag free">Free &amp; open source</span>
-    <p>Alibaba's open-source coding agent CLI for the terminal. Powered by Qwen models, agentic coding workflows.</p>
-    <div class="best-for"><span>Best for</span> Qwen models, non-interactive automation</div>
-    <div class="install">npm install -g @qwen-code/qwen-code</div>
-    <div class="card-footer">
-      <a class="link" href="https://qwen.ai" target="_blank" rel="noopener">Visit site</a>
-      <a class="link" href="https://github.com/QwenLM/Qwen-Code-CLI" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
 
-  <!-- ===================== CHAT / TERMINAL ASSISTANTS ===================== -->
+    <div class="card" data-cat="agent">
+      <div class="card-top">
+        <div class="logo" style="background:#14b8a6;">A</div>
+        <h3>Aider</h3>
+      </div>
+      <span class="tag free">Free &amp; open source</span>
+      <p>AI pair programming in your terminal. Edits code in your local git repo with any LLM — fully open source.</p>
+      <div class="best-for"><span>Best for</span> git-based pair programming, open source</div>
+      <div class="install">pip install aider-chat</div>
+      <div class="card-footer">
+        <a class="link" href="https://aider.chat" target="_blank" rel="noopener">Visit site</a>
+        <a class="link" href="https://github.com/Aider-AI/aider" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#0a7dff;">S</div>
-      <h3>ShellGPT</h3>
+    <div class="card" data-cat="agent">
+      <div class="card-top">
+        <div class="logo" style="background:#22c55e;">G</div>
+        <h3>Goose</h3>
+      </div>
+      <span class="tag free">Free &amp; open source</span>
+      <p>Block's open-source AI agent that runs on your machine. Extensible, local-first, works with any model.</p>
+      <div class="best-for"><span>Best for</span> automations, MCP extensions, local AI</div>
+      <div class="install">curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh | bash
+      </div>
+      <div class="card-footer">
+        <a class="link" href="https://github.com/block/goose" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <span class="tag free">Free &amp; open source</span>
-    <p>ChatGPT in your terminal. Generate shell commands, code, and get answers without leaving the CLI.</p>
-    <div class="best-for"><span>Best for</span> shell commands, quick Q&amp;A in terminal</div>
-    <div class="install">pip install shell-gpt</div>
-    <div class="card-footer">
-      <a class="link" href="https://github.com/TheR1D/shell_gpt" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#6d28d9;">L</div>
-      <h3>LLM</h3>
+    <div class="card" data-cat="agent">
+      <div class="card-top">
+        <div class="logo" style="background:#dc2626;">O</div>
+        <h3>OpenHands</h3>
+      </div>
+      <span class="tag free">Free &amp; open source</span>
+      <p>AI software engineering agent (ex-OpenDevin). Official CLI via pip — open source, bring your own model.</p>
+      <div class="best-for"><span>Best for</span> large refactors, autonomous projects</div>
+      <div class="install">pip install openhands</div>
+      <div class="card-footer">
+        <a class="link" href="https://github.com/All-Hands-AI/OpenHands" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <span class="tag free">Free &amp; open source</span>
-    <p>Simon Willison's simple CLI for running LLMs from the terminal. Pipe text in, get AI output out.</p>
-    <div class="best-for"><span>Best for</span> piping text, scripting &amp; data workflows</div>
-    <div class="install">pip install llm</div>
-    <div class="card-footer">
-      <a class="link" href="https://llm.datasette.io" target="_blank" rel="noopener">Visit site</a>
-      <a class="link" href="https://github.com/simonw/llm" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#1d4ed8;">F</div>
-      <h3>Fabric</h3>
+    <div class="card" data-cat="agent">
+      <div class="card-top">
+        <div class="logo" style="background:#0891b2;">Q</div>
+        <h3>Qwen Code</h3>
+      </div>
+      <span class="tag free">Free &amp; open source</span>
+      <p>Alibaba's open-source coding agent CLI for the terminal. Powered by Qwen models, agentic coding workflows.</p>
+      <div class="best-for"><span>Best for</span> Qwen models, non-interactive automation</div>
+      <div class="install">npm install -g @qwen-code/qwen-code</div>
+      <div class="card-footer">
+        <a class="link" href="https://qwen.ai" target="_blank" rel="noopener">Visit site</a>
+        <a class="link" href="https://github.com/QwenLM/Qwen-Code-CLI" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <span class="tag free">Free &amp; open source</span>
-    <p>Open-source framework for augmenting humans with AI. Hundreds of patterns for prompt-powered workflows.</p>
-    <div class="best-for"><span>Best for</span> text analysis, summarization pipelines</div>
-    <div class="install">pipx install fabric</div>
-    <div class="card-footer">
-      <a class="link" href="https://github.com/danielmiessler/fabric" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
 
-  <!-- ===================== LOCAL / OFFLINE ===================== -->
+    <!-- ===================== CHAT / TERMINAL ASSISTANTS ===================== -->
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#7f8c8d;">O</div>
-      <h3>Ollama</h3>
+    <div class="card" data-cat="chat">
+      <div class="card-top">
+        <div class="logo" style="background:#0a7dff;">S</div>
+        <h3>ShellGPT</h3>
+      </div>
+      <span class="tag free">Free &amp; open source</span>
+      <p>ChatGPT in your terminal. Generate shell commands, code, and get answers without leaving the CLI.</p>
+      <div class="best-for"><span>Best for</span> shell commands, quick Q&amp;A in terminal</div>
+      <div class="install">pip install shell-gpt</div>
+      <div class="card-footer">
+        <a class="link" href="https://github.com/TheR1D/shell_gpt" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <span class="tag local">Local &amp; offline</span>
-    <p>Run open-source LLMs (Llama, Qwen, Gemma, DeepSeek…) locally on your machine. 100% free, no cloud.</p>
-    <div class="best-for"><span>Best for</span> local models, privacy, offline LLMs</div>
-    <div class="install">curl -fsSL https://ollama.com/install.sh | sh</div>
-    <div class="card-footer">
-      <a class="link" href="https://ollama.com" target="_blank" rel="noopener">Visit site</a>
-      <a class="link" href="https://github.com/ollama/ollama" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#9333ea;">L</div>
-      <h3>Llamafile</h3>
+    <div class="card" data-cat="chat">
+      <div class="card-top">
+        <div class="logo" style="background:#6d28d9;">L</div>
+        <h3>LLM</h3>
+      </div>
+      <span class="tag free">Free &amp; open source</span>
+      <p>Simon Willison's simple CLI for running LLMs from the terminal. Pipe text in, get AI output out.</p>
+      <div class="best-for"><span>Best for</span> piping text, scripting &amp; data workflows</div>
+      <div class="install">pip install llm</div>
+      <div class="card-footer">
+        <a class="link" href="https://llm.datasette.io" target="_blank" rel="noopener">Visit site</a>
+        <a class="link" href="https://github.com/simonw/llm" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <span class="tag local">Local &amp; offline</span>
-    <p>Mozilla's single-file way to run LLMs. Download one executable that runs a model — nothing else needed.</p>
-    <div class="best-for"><span>Best for</span> zero-dependency local inference</div>
-    <div class="install">chmod +x ./model.llamafile && ./model.llamafile</div>
-    <div class="card-footer">
-      <a class="link" href="https://github.com/Mozilla-Ocho/llamafile" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#f43f5e;">J</div>
-      <h3>Jan</h3>
+    <div class="card" data-cat="chat">
+      <div class="card-top">
+        <div class="logo" style="background:#1d4ed8;">F</div>
+        <h3>Fabric</h3>
+      </div>
+      <span class="tag free">Free &amp; open source</span>
+      <p>Open-source framework for augmenting humans with AI. Hundreds of patterns for prompt-powered workflows.</p>
+      <div class="best-for"><span>Best for</span> text analysis, summarization pipelines</div>
+      <div class="install">pipx install fabric</div>
+      <div class="card-footer">
+        <a class="link" href="https://github.com/danielmiessler/fabric" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <span class="tag local">Local &amp; offline</span>
-    <p>Offline-first AI assistant that runs models 100% on your hardware. Private, free, no cloud sync.</p>
-    <div class="best-for"><span>Best for</span> private local chat, desktop AI</div>
-    <div class="install">Download .deb / .dmg / .exe from jan.ai</div>
-    <div class="card-footer">
-      <a class="link" href="https://jan.ai" target="_blank" rel="noopener">Visit site</a>
-      <a class="link" href="https://github.com/janhq/jan" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#059669;">L</div>
-      <h3>LocalAI</h3>
-    </div>
-    <span class="tag local">Local &amp; offline</span>
-    <p>Free, open-source OpenAI-compatible local API server. Drop-in replacement that runs models on your hardware.</p>
-    <div class="best-for"><span>Best for</span> local OpenAI-compatible API server</div>
-    <div class="install">curl https://localai.io/install.sh | sh</div>
-    <div class="card-footer">
-      <a class="link" href="https://localai.io" target="_blank" rel="noopener">Visit site</a>
-      <a class="link" href="https://github.com/mudler/LocalAI" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div>
+    <!-- ===================== LOCAL / OFFLINE ===================== -->
 
-  <!-- ===================== EDITOR INTEGRATIONS ===================== -->
-
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#0a84ff;">C</div>
-      <h3>Cursor</h3>
+    <div class="card" data-cat="local">
+      <div class="card-top">
+        <div class="logo" style="background:#7f8c8d;">O</div>
+        <h3>Ollama</h3>
+      </div>
+      <span class="tag local">Local &amp; offline</span>
+      <p>Run open-source LLMs (Llama, Qwen, Gemma, DeepSeek…) locally on your machine. 100% free, no cloud.</p>
+      <div class="best-for"><span>Best for</span> local models, privacy, offline LLMs</div>
+      <div class="install">curl -fsSL https://ollama.com/install.sh | sh</div>
+      <div class="card-footer">
+        <a class="link" href="https://ollama.com" target="_blank" rel="noopener">Visit site</a>
+        <a class="link" href="https://github.com/ollama/ollama" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <span class="tag free">Free plan</span>
-    <p>AI code editor with a free plan. Agent mode, inline editing and chat built right in. Desktop app, not a CLI.</p>
-    <div class="best-for"><span>Best for</span> GUI editing, in-editor AI agents</div>
-    <div class="install">Download from cursor.com</div>
-    <div class="card-footer">
-      <a class="link" href="https://cursor.com" target="_blank" rel="noopener">Visit site</a>
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-top">
-      <div class="logo" style="background:#15803d;">C</div>
-      <h3>Continue</h3>
+    <div class="card" data-cat="local">
+      <div class="card-top">
+        <div class="logo" style="background:#9333ea;">L</div>
+        <h3>Llamafile</h3>
+      </div>
+      <span class="tag local">Local &amp; offline</span>
+      <p>Mozilla's single-file way to run LLMs. Download one executable that runs a model — nothing else needed.</p>
+      <div class="best-for"><span>Best for</span> zero-dependency local inference</div>
+      <div class="install">chmod +x ./model.llamafile && ./model.llamafile</div>
+      <div class="card-footer">
+        <a class="link" href="https://github.com/Mozilla-Ocho/llamafile" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <span class="tag free">Free &amp; open source</span>
-    <p>Open-source AI assistant for VS Code &amp; JetBrains. Bring any model or API key — the core is free forever.</p>
-    <div class="best-for"><span>Best for</span> IDE autocomplete, any model/key</div>
-    <div class="install">VS Code → Extensions → search "Continue"</div>
-    <div class="card-footer">
-      <a class="link" href="https://continue.dev" target="_blank" rel="noopener">Visit site</a>
-      <a class="link" href="https://github.com/continuedev/continue" target="_blank" rel="noopener">GitHub</a>
+
+    <div class="card" data-cat="local">
+      <div class="card-top">
+        <div class="logo" style="background:#f43f5e;">J</div>
+        <h3>Jan</h3>
+      </div>
+      <span class="tag local">Local &amp; offline</span>
+      <p>Offline-first AI assistant that runs models 100% on your hardware. Private, free, no cloud sync.</p>
+      <div class="best-for"><span>Best for</span> private local chat, desktop AI</div>
+      <div class="install">Download .deb / .dmg / .exe from jan.ai</div>
+      <div class="card-footer">
+        <a class="link" href="https://jan.ai" target="_blank" rel="noopener">Visit site</a>
+        <a class="link" href="https://github.com/janhq/jan" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
-  </div>
 
-</main>
+    <div class="card" data-cat="local">
+      <div class="card-top">
+        <div class="logo" style="background:#059669;">L</div>
+        <h3>LocalAI</h3>
+      </div>
+      <span class="tag local">Local &amp; offline</span>
+      <p>Free, open-source OpenAI-compatible local API server. Drop-in replacement that runs models on your hardware.
+      </p>
+      <div class="best-for"><span>Best for</span> local OpenAI-compatible API server</div>
+      <div class="install">curl https://localai.io/install.sh | sh</div>
+      <div class="card-footer">
+        <a class="link" href="https://localai.io" target="_blank" rel="noopener">Visit site</a>
+        <a class="link" href="https://github.com/mudler/LocalAI" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
 
-<footer>
-  <p>Every install command above was verified against each tool's official docs. Free tier details may change — always check the tool's site for the latest setup and pricing.</p>
-</footer>
+    <!-- ===================== EDITOR INTEGRATIONS ===================== -->
+
+    <div class="card" data-cat="editor">
+      <div class="card-top">
+        <div class="logo" style="background:#0a84ff;">C</div>
+        <h3>Cursor</h3>
+      </div>
+      <span class="tag free">Free plan</span>
+      <p>AI code editor with a free plan. Agent mode, inline editing and chat built right in. Desktop app, not a CLI.
+      </p>
+      <div class="best-for"><span>Best for</span> GUI editing, in-editor AI agents</div>
+      <div class="install">Download from cursor.com</div>
+      <div class="card-footer">
+        <a class="link" href="https://cursor.com" target="_blank" rel="noopener">Visit site</a>
+      </div>
+    </div>
+
+    <div class="card" data-cat="editor">
+      <div class="card-top">
+        <div class="logo" style="background:#15803d;">C</div>
+        <h3>Continue</h3>
+      </div>
+      <span class="tag free">Free &amp; open source</span>
+      <p>Open-source AI assistant for VS Code &amp; JetBrains. Bring any model or API key — the core is free forever.
+      </p>
+      <div class="best-for"><span>Best for</span> IDE autocomplete, any model/key</div>
+      <div class="install">VS Code → Extensions → search "Continue"</div>
+      <div class="card-footer">
+        <a class="link" href="https://continue.dev" target="_blank" rel="noopener">Visit site</a>
+        <a class="link" href="https://github.com/continuedev/continue" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Every install command above was verified against each tool's official docs. Free tier details may change — always
+      check the tool's site for the latest setup and pricing.</p>
+  </footer>
+
+  <script>
+    const cards = Array.from(document.querySelectorAll('.card'));
+    const searchInput = document.getElementById('searchInput');
+    const resultsInfo = document.getElementById('resultsInfo');
+    const buttons = Array.from(document.querySelectorAll('.fbtn'));
+    const state = { cat: 'all', tag: '' };
+
+    function applyFilters() {
+      const q = searchInput.value.trim().toLowerCase();
+      let visible = 0;
+
+      cards.forEach(card => {
+        const catMatch = state.cat === 'all' || card.dataset.cat === state.cat;
+        const tag = card.querySelector('.tag');
+        const tagMatch = !state.tag || (tag && tag.textContent.trim().toLowerCase() === state.tag.toLowerCase());
+        const haystack = card.textContent.toLowerCase();
+        const searchMatch = !q || haystack.includes(q);
+
+        const show = catMatch && tagMatch && searchMatch;
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+
+      resultsInfo.textContent = visible + ' of ' + cards.length + ' tools shown';
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        const value = btn.dataset.value;
+
+        if (filter === 'cat') {
+          if (state.cat === value && value === 'all') return;
+          state.cat = value;
+          state.tag = '';
+          buttons.forEach(b => {
+            if (b.dataset.filter === 'tag') b.classList.remove('active');
+            if (b.dataset.filter === 'cat') b.classList.toggle('active', b.dataset.value === value);
+          });
+        } else {
+          if (state.tag === value) {
+            state.tag = '';
+            btn.classList.remove('active');
+          } else {
+            state.tag = value;
+            state.cat = 'all';
+            buttons.forEach(b => {
+              if (b.dataset.filter === 'cat') b.classList.toggle('active', b.dataset.value === 'all');
+              if (b.dataset.filter === 'tag') b.classList.toggle('active', b.dataset.value === value);
+            });
+          }
+        }
+        applyFilters();
+      });
+    });
+
+    searchInput.addEventListener('input', applyFilters);
+    applyFilters();
+  </script>
 
 </body>
+
 </html>
